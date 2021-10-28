@@ -65,8 +65,8 @@ router.get("/nodos/:nodo", (req, res) => {
       tempConn.query("SELECT * FROM nodos where idnodo=?", [nodo], function (error, result) {
         var resultado = result; //se almacena el resultado de la consulta en la variable resultado
         if (error) {
-          throw error;
           res.send("error en la ejecución del query");
+          throw error;
         } else {
           tempConn.release(); //se librea la conexión
           for (i = 0; i < resultado.length; i++) {
