@@ -8,7 +8,7 @@ const connection = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "", //el password de ingreso a mysql
-  database: "CaliDatos",
+  database: "smartpark",
   port: 3306,
 });
 
@@ -25,7 +25,7 @@ router.get("/nodos", (req, res) => {
     } else {
       console.log("Conexion correcta.");
       //ejecución de la consulta
-      tempConn.query("SELECT * FROM nodos", function (error, result) {
+      tempConn.query("SELECT * FROM data", function (error, result) {
         var resultado = result; //se almacena el resultado de la consulta en la variable resultado
         if (error) {
           throw error;
@@ -35,10 +35,10 @@ router.get("/nodos", (req, res) => {
           for (i = 0; i < resultado.length; i++) {
             //se lee el resultado y se arma el json
             json1 = {
-              "idnodo": resultado[i].idnodo,
-              "latitud": resultado[i].latitud,
-              "longitud": resultado[i].longitud,
-              "descripcion": resultado[i].descripcion,
+              "id_Calle": resultado[i].id_Calle,
+              "slot": resultado[i].slot,
+              "estado": resultado[i].estado,
+              "fechaHora": resultado[i].fechaHora,
             };
             console.log(json1); //se muestra el json en la consola
             arreglo.push(json1); //se añade el json al arreglo
