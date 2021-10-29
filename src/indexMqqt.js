@@ -28,6 +28,8 @@ client.on("message", function (topic, message) {
   json1 = JSON.parse(message.toString());
 
   let fechaHora = moment().format();
+  let fkPark = json1.fk_data;
+  let idCalle = json1.id_Calle;
   if (json1.process === 1) {
     console.log("Se procesan datos");
   } else {
@@ -51,11 +53,11 @@ client.on("message", function (topic, message) {
           tempConn.query(
             "INSERT INTO data VALUES(null, ?, ?, ?, ?, ?)",
             [
-              parqueo.id_Calle,
+              idCalle,
               parqueo.slot,
               parqueo.estado,
               fechaHora,
-              parqueo.fk_data,
+              fkPark,
             ],
             function (error, result) {
               //se ejecuta la inserción
