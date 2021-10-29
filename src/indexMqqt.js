@@ -37,10 +37,8 @@ client.on("message", function (topic, message) {
       //Para obtener el objeto individual del json slot
       var parqueo = json1.slots[0][`${i}`];
 
-      
       // console.log(parqueo.id_Calle)
       // console.log("------------")
-
 
       //client.publish('topico2', 'mensaje recibido')
       connection.getConnection(function (error, tempConn) {
