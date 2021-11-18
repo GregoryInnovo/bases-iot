@@ -23,7 +23,7 @@
         </tr>
             <?php
 
-                $url_rest="ec2-54-227-200-52.compute-1.amazonaws.com:3000/dayresult/demanda"; //se define la url del servidor
+                $url_rest="ec2-54-210-133-208.compute-1.amazonaws.com:3000/dayresult/demanda"; //se define la url del servidor
 
                 $curl=curl_init($url_rest); //se da inicio al curl y se fijanlas opciones
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
