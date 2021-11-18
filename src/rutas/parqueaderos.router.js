@@ -7,7 +7,7 @@ const connection = mysql.createPool({
   connectionLimit: 500,
   host: "localhost",
   user: "root",
-  password: "root", //el password de ingreso a mysql
+  password: "", //el password de ingreso a mysql
   database: "smartpark",
   port: 3306,
 });

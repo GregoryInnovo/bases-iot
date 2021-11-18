@@ -31,8 +31,7 @@ client.on("message", function (topic, message) {
   let fkPark = json1.fk_data;
   let idCalle = json1.id_Calle;
   if (json1.process === 1) {
-
-    let fecha = moment().format('YYYY/MM/DD');
+    let fecha = moment().format("YYYY/MM/DD");
     connection.getConnection(function (error, tempConn) {
       //conexion a mysql
       if (error) {
@@ -42,7 +41,7 @@ client.on("message", function (topic, message) {
         console.log("Conexion correcta.");
         tempConn.query(
           "INSERT INTO dayresult VALUES(null, ?, ?, ?, ?, ?)",
-          [fkPark, fecha, json1.PorcentajeOcu, json1.zona,  json1.valores],
+          [fkPark, fecha, json1.PorcentajeOcu, json1.zona, json1.valores],
           function (error, result) {
             //se ejecuta la inserción
             if (error) {
@@ -58,13 +57,14 @@ client.on("message", function (topic, message) {
     });
   } else {
     // se itera cada json
+    console.log("------------1");
     for (let i = 1; i <= json1.bucle; i++) {
       //Para obtener el objeto individual del json slot
       let parqueo = json1.slots[0][`${i}`];
-      
-      let res1 = parqueo.slot
-      let res2 = parqueo.estado
-      // console.log("------------")
+
+      let res1 = parqueo.slot;
+      let res2 = parqueo.estado;
+      console.log("------------");
 
       //client.publish('topico2', 'mensaje recibido')
       connection.getConnection(function (error, tempConn) {

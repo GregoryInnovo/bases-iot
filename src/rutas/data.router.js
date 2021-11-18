@@ -7,7 +7,7 @@ const connection = mysql.createPool({
   connectionLimit: 500,
   host: "localhost",
   user: "root",
-  password: "root", //el password de ingreso a mysql
+  password: "", //el password de ingreso a mysql
   database: "smartpark",
   port: 3306,
 });
@@ -47,6 +47,47 @@ router.get("/data", (req, res) => {
           res.json(arreglo); //se retorna el arreglo
         }
       });
+    }
+  });
+});
+
+router.get("/data/zone/:id", (req, res) => {
+  var json1 = {}; //variable para almacenar cada registro que se lea, en formato json
+  var arreglo = []; //variable para almacenar todos los datos, en formato arreglo de json
+  let { id } = req.params;
+
+  connection.getConnection(function (error, tempConn) {
+    //conexion a mysql
+    if (error) {
+      throw error; //si no se pudo conectar
+    } else {
+      console.log("Conexion correcta.");
+      //ejecución de la consulta
+      tempConn.query(
+        "SELECT * FROM data WHERE id_Calle='" +
+          id +
+          "' ORDER BY fechaHora DESC",
+        function (error, result) {
+          var resultado = result; //se almacena el resultado de la consulta en la variable resultado
+          if (error) {
+            throw error;
+            res.send("error en la ejecución del query");
+          } else {
+            tempConn.release(); //se librea la conexión
+            for (i = 0; i < resultado.length; i++) {
+              //se lee el resultado y se arma el json
+              json1 = {
+                id_Calle: resultado[i].id_Calle,
+                slot: resultado[i].slot,
+                estado: resultado[i].estado,
+              };
+              console.log(json1); //se muestra el json en la consola
+              arreglo.push(json1); //se añade el json al arreglo
+            }
+            res.json(arreglo); //se retorna el arreglo
+          }
+        }
+      );
     }
   });
 });
