@@ -12,19 +12,17 @@
             }
     ?>
         <h1>PROYECTO FIOT</h1>
-        <h2>Datos de los resultados de cada día</h2>
+        <h2>Datos de la cantidad de carros en circulacion por zonas</h2>
         <table border="2px">
         <tr>
-            <th>ID</th>
             <th>ID_PARQUEDO</th>
             <th>FECHA</th>
-            <th>PORCENTAJE_DE_OCUPACIÓN</th>
             <th>ZONA</th>
             <th>VALORES DE LOS CARROS EN CIRCULACIÓN X SLOT</th>
         </tr>
             <?php
 
-                $url_rest="localhost:3000/dayresult"; //se define la url del servidor
+                $url_rest="localhost:3000/dayresult/circulacion"; //se define la url del servidor
 
                 $curl=curl_init($url_rest); //se da inicio al curl y se fijanlas opciones
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -40,17 +38,15 @@
 
                 for ($i=0; $i<$tam; $i++){
                     $j = $resp[$i];
-                    $id = $j -> id; //se obtiene cada dato del json
                     $parqk = $j -> fkPark;
                     $date = $j -> fecha;
-                    $percen = $j -> PorcentajeOcu;
                     $zone = $j -> zona;
                     $values = $j -> valores;
-                    echo "<tr><td>$id</td><td>$parqk</td><td>$date</td><td>$percen</td><td>$zone</td><td>$values</td></tr>";
+                    echo "<tr><td>$parqk</td><td>$date</td><td>$zone</td><td>$values</td></tr>";
                 }
             ?>
     </table>
-    <a href="variables.php">Volver</a><br>
+    <a href="dayresultselection.php">Volver</a><br>
     <a href="logout.php">Cerrar Sesion</a>
     </body>
 </html>
