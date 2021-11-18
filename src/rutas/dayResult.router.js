@@ -5,9 +5,9 @@ const mysql = require("mysql");
 // se crea la conexión a mysql
 const connection = mysql.createPool({
   connectionLimit: 500,
-  host: "localhost",
+  host: "ec2-54-227-200-52.compute-1.amazonaws.com",
   user: "root",
-  password: "root", //el password de ingreso a mysql
+  password: "mysql", //el password de ingreso a mysql
   database: "smartpark",
   port: 3306,
 });
@@ -61,27 +61,30 @@ router.get("/dayresult/demanda", (req, res) => {
     } else {
       console.log("Conexion correcta.");
       //ejecución de la consulta
-      tempConn.query("SELECT fkPark, fecha, PorcentajeOcu, zona FROM dayresult", function (error, result) {
-        var resultado = result; //se almacena el resultado de la consulta en la variable resultado
-        if (error) {
-          throw error;
-          res.send("error en la ejecución del query");
-        } else {
-          tempConn.release(); //se librea la conexión
-          for (i = 0; i < resultado.length; i++) {
-            //se lee el resultado y se arma el json
-            json1 = {
-              fkPark: resultado[i].fkPark,
-              fecha: resultado[i].fecha,
-              PorcentajeOcu: resultado[i].PorcentajeOcu,
-              zona: resultado[i].zona,
-            };
-            console.log(json1); //se muestra el json en la consola
-            arreglo.push(json1); //se añade el json al arreglo
+      tempConn.query(
+        "SELECT fkPark, fecha, PorcentajeOcu, zona FROM dayresult",
+        function (error, result) {
+          var resultado = result; //se almacena el resultado de la consulta en la variable resultado
+          if (error) {
+            throw error;
+            res.send("error en la ejecución del query");
+          } else {
+            tempConn.release(); //se librea la conexión
+            for (i = 0; i < resultado.length; i++) {
+              //se lee el resultado y se arma el json
+              json1 = {
+                fkPark: resultado[i].fkPark,
+                fecha: resultado[i].fecha,
+                PorcentajeOcu: resultado[i].PorcentajeOcu,
+                zona: resultado[i].zona,
+              };
+              console.log(json1); //se muestra el json en la consola
+              arreglo.push(json1); //se añade el json al arreglo
+            }
+            res.json(arreglo); //se retorna el arreglo
           }
-          res.json(arreglo); //se retorna el arreglo
         }
-      });
+      );
     }
   });
 });
@@ -97,27 +100,30 @@ router.get("/dayresult/circulacion", (req, res) => {
     } else {
       console.log("Conexion correcta.");
       //ejecución de la consulta
-      tempConn.query("SELECT fkPark, fecha, valores, zona FROM dayresult", function (error, result) {
-        var resultado = result; //se almacena el resultado de la consulta en la variable resultado
-        if (error) {
-          throw error;
-          res.send("error en la ejecución del query");
-        } else {
-          tempConn.release(); //se librea la conexión
-          for (i = 0; i < resultado.length; i++) {
-            //se lee el resultado y se arma el json
-            json1 = {
-              fkPark: resultado[i].fkPark,
-              fecha: resultado[i].fecha,
-              valores: resultado[i].valores,
-              zona: resultado[i].zona,
-            };
-            console.log(json1); //se muestra el json en la consola
-            arreglo.push(json1); //se añade el json al arreglo
+      tempConn.query(
+        "SELECT fkPark, fecha, valores, zona FROM dayresult",
+        function (error, result) {
+          var resultado = result; //se almacena el resultado de la consulta en la variable resultado
+          if (error) {
+            throw error;
+            res.send("error en la ejecución del query");
+          } else {
+            tempConn.release(); //se librea la conexión
+            for (i = 0; i < resultado.length; i++) {
+              //se lee el resultado y se arma el json
+              json1 = {
+                fkPark: resultado[i].fkPark,
+                fecha: resultado[i].fecha,
+                valores: resultado[i].valores,
+                zona: resultado[i].zona,
+              };
+              console.log(json1); //se muestra el json en la consola
+              arreglo.push(json1); //se añade el json al arreglo
+            }
+            res.json(arreglo); //se retorna el arreglo
           }
-          res.json(arreglo); //se retorna el arreglo
         }
-      });
+      );
     }
   });
 });
