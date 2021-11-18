@@ -80,6 +80,7 @@ router.get("/data/zone/:id", (req, res) => {
                 id_Calle: resultado[i].id_Calle,
                 slot: resultado[i].slot,
                 estado: resultado[i].estado,
+                fechaHora: resultado[i].fechaHora,
               };
               console.log(json1); //se muestra el json en la consola
               arreglo.push(json1); //se añade el json al arreglo
