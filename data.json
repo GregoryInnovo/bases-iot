@@ -15,11 +15,11 @@
   "id_Calle": "Calle4A",
   "slots": [
     {
-      "1": { "slot": 1, "estado": 1 },
-      "2": { "slot": 2, "estado": 1 },
-      "3": { "slot": 3, "estado": 1 },
-      "4": { "slot": 4, "estado": 1 },
-      "5": { "slot": 5, "estado": 1 }
+      "1": { "slot": 1, "estado": 0 },
+      "2": { "slot": 2, "estado": 0 },
+      "3": { "slot": 3, "estado": 0 },
+      "4": { "slot": 4, "estado": 0 },
+      "5": { "slot": 5, "estado": 0 }
     }
   ]
 } 
