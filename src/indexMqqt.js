@@ -7,7 +7,7 @@ console.log("Se prendio node");
 // se crea la conexión a mysql
 const connection = mysql.createPool({
   connectionLimit: 500,
-  host: "ec2-54-210-133-208.compute-1.amazonaws.com",
+  host: "ec2-52-90-24-61.compute-1.amazonaws.com",
   user: "root",
   password: "mysql", //el password de ingreso a mysql
   database: "smartpark",
