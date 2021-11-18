@@ -37,7 +37,7 @@ session_start();
             <td>Resultados del día</td>
             <td>Permite ver los resultados almacenados del día</td>
             <td>
-                <a href="dayresult.php">Ir a ver los datos diarios</a>
+                <a href="dayresultselection.php">Ir a ver los datos diarios</a>
             </td>
         </tr>
 </table>
