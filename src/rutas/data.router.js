@@ -35,6 +35,7 @@ router.get("/data", (req, res) => {
           for (i = 0; i < resultado.length; i++) {
             //se lee el resultado y se arma el json
             json1 = {
+              id: resultado[i].id,
               id_Calle: resultado[i].id_Calle,
               slot: resultado[i].slot,
               estado: resultado[i].estado,
