@@ -12,7 +12,7 @@
             }
     ?>
         <h1>PROYECTO FIOT</h1>
-        <h2>Datos de los resultados de cada día</h2>
+        <h2>Datos de la cantidad de carros en circulacion por zonas</h2>
         <table border="2px">
         <tr>
             <th>ID_PARQUEDO</th>

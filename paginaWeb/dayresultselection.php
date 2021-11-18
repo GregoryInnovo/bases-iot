@@ -37,7 +37,7 @@ session_start();
         </tr>
        
 </table>
-
+<a href="variables.php">Volver</a><br>
 <a href="logout.php">Cerrar Sesion</a>
 
 </body>
