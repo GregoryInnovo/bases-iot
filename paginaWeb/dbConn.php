@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect("http://ec2-54-227-200-52.compute-1.amazonaws.com:3000","root","mysql","smartpark");
+$db = mysqli_connect("ec2-54-227-200-52.compute-1.amazonaws.com","root","mysql","smartpark");
 
 if(!$db)
 {
